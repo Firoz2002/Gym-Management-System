@@ -1,0 +1,27 @@
+{
+  "name": "gym-site",
+  "version": "1.0.0",
+  "description": "This is one of my internship projects",
+  "main": "app.js",
+  "scripts": {
+    "start": "npm app.js"
+  },
+  "author": "Firoz Kamdar",
+  "license": "ISC",
+  "dependencies": {
+    "@grapecity/activereports": "^4.2.2",
+    "agenda": "^5.0.0",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "easyinvoice": "^3.0.47",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "firebase": "^10.12.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.13"
+  }
+}

@@ -1,0 +1,224 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(35, 35, 35);
+}
+
+header {
+    color: white;
+    margin: 1rem;
+}
+
+nav {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+ul {
+    display: flex;
+    margin: 1rem;
+    list-style: none;
+}
+
+li {
+    margin-left: 1rem;
+}
+
+a {
+    cursor: pointer;
+    font-size: small;
+    margin: 5px;
+    color: white;
+    text-decoration: none;
+}
+
+table {
+    font-size: larger;
+    position: absolute;
+    z-index: 2;
+    width: 60%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: 0 2px 12px rgba(32, 32, 32, .3);
+    background: white;
+    text-align: center;
+}
+
+th, td {
+    padding: 12px 15px;
+}
+
+th {
+    letter-spacing: 2px;
+    background: black;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+}
+
+td {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+#addBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    margin: 2rem;
+    width: 50px;
+    height: 50px;
+    position: fixed; 
+    background-color: black; 
+    color: white; 
+    padding: 10px; 
+    border: 0; 
+    outline: 0; 
+    border-radius: 50%;
+    right: 0;
+    bottom: 0; 
+}
+
+.no {
+    color: red;
+}
+
+.fees, .yes {
+    color: green;
+}
+
+.form-popup label {
+    margin-top: 10px;
+}
+
+* {box-sizing: border-box;}
+
+.form-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 5px 10px rgba(#000, 0.1);
+}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+    border-radius:5px;
+    max-width: 400px;
+    padding: 1rem;
+    background-color: white;
+}
+
+.form-container h1 {
+    text-align: center;
+    margin: 0 0 10px 0;
+}
+
+/* Full-width input fields */
+input {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Set a style for the submit/login button */
+.btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.cancel {
+    background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+}
+
+.options {
+display: flex;
+justify-content: space-evenly;
+}
+
+.btns {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+}
+
+.btns .btn {
+    color: white;
+    margin: 1rem;
+    width: 100px;
+    padding: 1rem;
+}
+
+.delete, .checkbox-column {
+    color: red;
+    display: none;
+}
+
+.container {
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.column {
+display: flex;
+column-gap: 15px;
+}
+
+.membership {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.membership select {
+    padding: .5rem;
+}

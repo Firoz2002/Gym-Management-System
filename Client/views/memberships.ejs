@@ -1,0 +1,201 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members | GYM-SITE</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/kettlebell.png">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/5ef28b2280.js" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    
+
+    .container {
+        margin: 2rem;
+        display: flex;
+        justify-content: center;
+        background: #333;
+        box-shadow: 10px 20px 20px 0 rgba(0, 0, 0, 0.4), -10px 20px 20px 0 rgba(0, 0, 0, 0.4), 0 -2px 20px 0 rgba(0, 0, 0, 0.5);
+    }
+</style>
+
+<body>
+
+    <header>
+        <h1>
+            Membership-Plans
+        </h1>
+    </header>
+<hr>
+    <main>
+        <div class="wrapper">
+            <div class="container">
+                <table>
+                    <tr>
+                        <th>
+                            Plan Name
+                        </th>
+                        <th>
+                            Duration
+                        </th>
+                        <th>
+                            Trainer
+                        </th>
+                        <th>
+                            Vip Lounge
+                        </th>
+                        <th>
+                            Special-Diet-Plan
+                        </th>
+                        <th>
+                            Fees
+                        </th>
+                        <th class="delete">
+                            Delete?
+                        </th>
+                        <div class="btns">
+                            <button class="btn cancel delete" onclick="hide()">Cancel</button>
+                            <button class="btn delete confirmBtn">Confirm? </button>
+                        </div>
+                    </tr>
+                </table>
+            </div>   
+
+           <div class="planner">
+            <button id="addBtn" style="visibility: visible;" onclick="openForm()"> + </button>
+            <div class="form-popup" id="myForm">
+                <div class="form-container">
+                  <h1>Planner</h1>
+              
+                  <label for="name"><b>Plan-Name</b></label>
+                  <input type="text" placeholder="Enter plan name" name="name" id="name" required>
+              
+                  <label for="duration"><b>Duration</b></label>
+                  <input type="text" placeholder="Enter plan duration (in days)" name="duration" id="duration" required>
+                  
+                  <label for="perks"><b>Perks</b></label>
+                  <div class="options">
+                    <label for="trainer">Trainer</label>
+                    <input type="checkbox" name="trainer" id="trainer">
+
+                    <label for="vip-lounge">Vip-Lounge</label>
+                    <input type="checkbox" name="vip" id="vip">
+
+                    <label for="diet-plan">Diet</label>
+                    <input type="checkbox" name="diet" id="diet">
+                  </div>
+
+                  <label for="amount"><b>Fees</b></label>
+                  <input type="text" placeholder="Enter amount" name="fees" id="fees" required>
+
+                  <button type="submit" class="btn submitBtn">Confirm</button>
+                  <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
+                </div>
+              </div>
+           </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        const table = document.querySelector('table');
+        const submit = document.querySelector('.submitBtn');
+
+        const planName = document.querySelector('#name');
+        const duration = document.querySelector('#duration');
+        const trainer = document.querySelector('#trainer');
+        const vip = document.querySelector('#vip');
+        const diet = document.querySelector('#diet');
+        const fees = document.querySelector('#fees');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                fetch('/get-membership-plans', {
+                    method: 'Get',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify()
+                })
+                .then(res => res.json())
+                .then((data) => {
+                    data.forEach(membership => {
+                        addMembership(membership);
+                    });
+
+                    for (let row of table.rows) {
+                        for(let cell of row.cells) {
+                            if(cell.innerText == 'No') {
+                                cell.classList.add('no')
+                            }
+                        }
+                    }
+                })
+            } catch (error) {
+                console.log(error);
+            }
+        })
+
+        submit.addEventListener('click', () => {
+            try {
+                fetch('/add-membership-plan', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                       name: planName.value,
+                       duration: duration.value,
+                       trainer: (trainer.checked) ? 'Yes' : 'No',
+                       vip: (vip.checked) ? 'Yes' : 'No',
+                       diet: (diet.checked) ? 'Yes' : 'No',
+                       fees: fees.value 
+                    })
+                })
+                .then((res) => {
+                    if(res.status === 201) {
+                        location.reload();
+                    }
+                })
+            } catch (error) {
+                console.log(error);
+            }
+        })
+        
+        const addMembership = (data) => {
+            const tr = document.createElement('tr')
+            tr.innerHTML = `
+                <td>
+                    ${data.name}
+                </td>
+                <td>
+                    ${data.duration} days
+                </td>
+                <td>
+                    ${data.trainer}
+                </td>
+                <td>
+                    ${data.vip}
+                </td>
+                <td>
+                    ${data.diet}
+                </td>
+                <td class="fees">
+                    $${data.fees}
+                </td>
+                <td class="checkbox-column">
+                    <input type="checkbox" class="checkbox">
+                </td>
+            `
+            table.appendChild(tr);
+        }
+    </script>
+</body>
+</html>

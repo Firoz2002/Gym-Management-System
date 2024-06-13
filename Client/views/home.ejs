@@ -1,0 +1,377 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | GYM-SITE</title>
+    <link rel="icon" type="image/x-icon" href="assets/kettlebell.png">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/5ef28b2280.js" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        font-family: 'Roboto';
+        color: white;
+        background-color: black;
+    }
+
+    h1 {
+        font-size: 80px;
+    }
+
+    nav {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    ul {
+        display: flex;
+        margin: 1rem;
+        list-style: none;
+    }
+
+    li {
+        margin-left: 1rem;
+    }
+
+    a {
+        font-size: small;
+        margin: 5px;
+        color: white;
+        text-decoration: none;
+    }
+
+    .wrapper {
+       margin: 3rem; 
+    }
+
+    .wrapper h1 {
+        letter-spacing: 4px;
+        font-size: 60px;
+    }
+
+    .arrow1 {
+        width: 200px;
+        height: 100px;
+    }
+
+    .arrow2 {
+        width: 50px;
+        height: 50px;
+        margin: 0%;
+    }
+
+    .container1 h1 img {
+        width: 50px;
+        height: 50px;
+        margin: 0%;
+    }
+
+    .container2 {
+     display: flex;
+    }
+
+    .container2 button {
+        font-weight: bold;
+        margin-left: 1rem;
+        border: none;
+        color: white;
+        background-color: #B96BFF;
+        font-size: larger;
+        width: 300px;
+        height: 40px;
+    }
+
+    .container2 img {
+        height: 150px;
+        width: 150px;
+        transform: rotate(-20deg);
+        filter: invert(67%) sepia(96%) saturate(543%) hue-rotate(24deg) brightness(111%) contrast(102%);
+    }
+
+    .container2 h1 {
+        margin: 1rem;
+    }
+
+    .container2 p {
+        line-height: 24px;
+        max-width: 70%;
+    }
+
+    .container2 p {
+        margin: 1rem;
+    }
+
+    .container3 {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 4rem;
+    }
+
+    .container3 div{    
+        width: 60%;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-image: url('assets/stripes.png');
+        filter: invert(67%) sepia(96%) saturate(543%) hue-rotate(24deg) brightness(111%) contrast(102%);
+    }
+
+    .container4 {
+        margin: 2rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    
+
+    @media(min-width: 0px) and (max-width: 500px) {
+        .wrapper {
+            margin: 1rem;
+        }
+
+        .wrapper h1 {
+            font-size: 40px;
+        }
+
+        .arrow1 {
+            margin: 1rem;
+            width: 100px;
+            height: 50px;
+        }
+
+        .container2 {
+            margin-top: 1rem;
+        }
+
+        .container2 img {
+            height: 95px;
+            width: 95px;
+        }
+
+        .container2 button {
+            width: 80%;
+            height: 40px;
+        }
+    }
+
+    .popup-overlay {
+
+display: none;
+
+position: fixed;
+
+top: 0;
+
+left: 0;
+
+width: 100%;
+
+height: 100%;
+
+background: rgba(0, 0, 0, 0.5);
+
+}
+
+.popup {
+font-family: Arial, sans-serif;
+position: absolute;
+color: black;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background: #fff;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.popup-content {
+text-align: center;
+}
+
+.popup .close {
+position: absolute;
+top: 10px;
+right: 10px;
+font-size: 20px;
+cursor: pointer;
+color: #333;
+}
+
+.popup .gymId {
+width: 80%;
+padding: 10px;
+margin: 10px 0;
+border: 1px solid #ddd;
+border-radius: 4px;
+}
+
+.popup button {
+background-color: #4caf50;
+color: #fff;
+padding: 10px 20px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+font-size: 16px;
+}
+
+</style>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <i class="fa-solid fa-house" style="color: white;"><a href="">Home</a></i>
+                </li>
+                <li>
+                    <i class="fa-solid fa-users members" style="color: white; visibility: hidden;"><a href="/members">Members</a></i>
+                </li>
+                <li>
+                    <i class="fa-solid fa-file-signature memberships" style="color: white; visibility: hidden;"><a href="/membership-plans">Memberships</a></i>
+                </li>
+                <li>
+                    <i class="fa-solid fa-money-check-dollar" style="color: white;"><a href="/monthly-bills">Monthly-Bills</a></i>
+                </li>
+            </ul>
+
+            <ul>
+                <li class="login">
+                    <i class="fa-solid fa-right-to-bracket" style="color: white;"><a>Login</a></i>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <hr>
+    <main>
+        <div class="wrapper">
+            <div class="container1">
+                <h1>Start <img src="assets/arrow2.png" alt="" class="arrow1"></h1>
+                <p>Today Like there is no tomorrow</p>
+                <img src="assets/arrow1.png" alt="" class="arrow1">
+            </div>
+            <div class="container2">
+                <img src="assets/kettlebell.png" alt="">
+                <div>
+                    <h1>Training Just</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                    <button>Know More</button>
+                </div>
+            </div>
+            <div class="container3">
+                <img src="assets/arrow1.png" alt="" class="arrow1">
+                <div>
+                    
+                </div>
+            </div>
+            <div class="container4">
+                <h1>For Yourself.</h1>
+            </div>
+        </div>
+
+        <div class="popup-overlay" id="popupOverlay">
+            <div class="popup" id="popup">
+                <span class="close" id="closePopup">&times;</span>
+                <div class="popup-content">
+                    <p>Gym-ID</p>
+                    <input type="number" placeholder="Enter your assigned gym-id" class="gymId" required>
+                    <button class="submitBtn">Login</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const login = document.querySelector('.login');
+        const members = document.querySelector('.members');
+        const memberships = document.querySelector('.memberships');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/islogged', {
+                method: 'Get',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify()
+            })
+            .then(res => res.json())
+            .then((data) => {
+                if(data.islogged) {
+                    login.innerHTML = `
+                        <div class="user-profile">
+                            <i class="fa-solid fa-circle-user"></i>
+                            <span class="username">${data.username}</span>
+                        </div>
+                        `
+                        
+                    if(data.role === 'admin') {
+                        members.style.visibility = 'visible';
+                        memberships.style.visibility = 'visible';
+                    } else {
+
+                    }
+                }
+            })
+        })
+
+        const submit = document.querySelector('.submitBtn');
+        const gymId = document.querySelector('.gymId');
+
+        submit.addEventListener('click', () => {
+            fetch(`/login/${gymId.value}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify()
+            })
+            .then((res) => {
+            if(res.status === 201) {
+                location.reload()
+            } else {
+                
+            }
+            })
+        })
+
+        login.addEventListener('click', function () {
+        const popupOverlay = document.getElementById('popupOverlay');
+        const popup = document.getElementById('popup');
+        const closePopup = document.getElementById('closePopup');
+        const emailInput = document.getElementById('emailInput');
+
+        function openPopup() {
+            popupOverlay.style.display = 'block';
+        }
+
+        function closePopupFunc() {
+            popupOverlay.style.display = 'none';
+        }
+
+        function submitForm() {
+            const email = emailInput.value;
+            console.log(`Email submitted: ${email}`);
+            closePopupFunc(); // Close the popup after form submission
+        }
+
+        openPopup();
+
+        closePopup.addEventListener('click', closePopupFunc);
+
+        popupOverlay.addEventListener('click', function (event) {
+            if (event.target === popupOverlay) {
+                closePopupFunc();
+            }
+        });
+        });
+    </script>
+</body>
+</html>

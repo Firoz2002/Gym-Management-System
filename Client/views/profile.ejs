@@ -1,0 +1,451 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/5ef28b2280.js" crossorigin="anonymous"></script>
+    <title>Profile | Gym-Site</title>
+</head>
+
+<style>
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;  
+}
+
+body {
+	background: #1f253d;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding-left: 0;
+}
+
+h1 {
+	font-size: 23px;
+}
+
+h2 {
+	font-size: 17px;
+}
+
+p {
+	font-size: 15px;
+}
+
+a {
+	text-decoration: none;
+	font-size: 15px;
+}
+	a:hover {
+		text-decoration: underline;
+	}
+
+h1, h2, p, a, span{
+	color: #fff;
+}
+
+.prim-font-color {
+	color: white;
+}
+
+.scnd-font-color {
+	color: #9099b7;
+}
+
+
+.horizontal-list {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+	.horizontal-list li {
+		float: left;
+	}
+
+.icon {
+	font-size: 25px;
+}
+
+.titular {
+	display: block;
+	line-height: 60px;
+	margin: 0;
+	text-align: center;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.button {
+	display: block;
+	width: 175px;
+	line-height: 50px;
+	font-size: 16px;
+	font-weight: 700;
+	text-align: center;
+	margin: 0 auto;
+	border-radius: 5px;
+	-webkit-transition: background .3s;
+	transition: background .3s;
+}
+	.button:hover {
+		text-decoration: none;
+	}
+
+.profile-picture {
+	border-radius: 100%;
+	overflow: hidden;
+	-webkit-box-sizing: content-box;
+  	-moz-box-sizing: content-box;
+  	box-sizing: content-box;	
+}
+	.big-profile-picture {
+		margin: 0 auto;		
+		border: 5px solid #50597b;
+		width: 150px;
+		height: 150px;
+	}
+
+.main-container {
+	font-family: 'Ubuntu', sans-serif;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.container1 {
+	height: 100vh;
+	border-right: 1px solid #394264;
+}
+
+.container2 {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+
+	.container {
+		width: 300px;
+	}
+		.block {
+			margin: 2rem;
+			margin-bottom: 25px;
+			background: #394264;
+			border-radius: 5px;
+		}
+				.month-data {
+					padding-top: 28px;
+				}
+					.month-data p {
+						display: inline-block;
+						margin: 0;
+						padding: 0 25px 15px;            
+						font-size: 16px;
+					}
+						.month-data p:last-child {
+							padding: 0 25px;
+              float: right;
+							font-size: 15px;
+						}
+						.increment {
+							color: #e64c65;
+						}
+			.media {
+				height: 216px;
+			}
+			
+			.profile {
+				padding-top: 1rem;
+				height: 400px;
+			}
+			
+				.user-name {
+					margin: 25px 0 16px;
+					text-align: center;
+				}
+				.profile-description {
+					width: 210px;
+					margin: 0 auto;
+					text-align: center;
+				}
+				.profile-options {
+					padding-top: 23px;
+				}
+					.profile-options li {
+						border-left: 1px solid #1f253d;
+					}
+						.profile-options p {
+							margin: 0;
+						}
+						.profile-options a {
+							display: block;					
+							width: 99px;
+							line-height: 60px;
+							text-align: center;
+							-webkit-transition: background .3s;
+							transition: background .3s;				
+						}
+							.profile-options a:hover {
+								text-decoration: none;
+								background: #50597b;
+							}
+							.profile-options .age {
+								border-top: 4px solid #fcb150;
+							}
+							.profile-options .weight {
+								border-top: 4px solid #11a8ab;
+							}
+							.profile-options .height {
+								border-top: 4px solid #e64c65;
+							}
+
+			.calendar-day {
+				height: 320px;
+				background: #3468af;
+			}
+				.calendar-day .titular {
+					background: #1a4e95;
+				}
+					.calendar-day .arrow-btn:hover {
+						background: #16417E;
+					}
+				.calendar-day .the-day {
+					margin: 0;
+					text-align: center;
+					font-size: 146px;
+				}
+				.add-event.button {
+					background: #4fc4f6;
+				}
+					.add-event.button:hover {
+						background: #35aadc;
+					}
+
+					.arrow-btn-container1 {
+						border-radius: 5px 5px 0 0;
+						margin-bottom: 1rem;
+						display: flex;
+						align-items: center;
+						background: #3468af;
+						justify-content: space-evenly;
+					}
+					
+
+.calendar-block {
+	height: 380px;
+	border-radius: 5px;
+}
+
+.week div {
+	font-weight: bold;
+}
+
+.days,
+.week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin: auto;
+  justify-content: space-between;
+}
+.week div,
+.days div {
+	font-size: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+}
+.days div:hover {
+  background: #ebedf0;
+  color: rgb(25, 25, 201);
+  cursor: pointer;
+}
+.week div {
+	font-size: 17px;
+	color: #4fc4f6;
+}
+.current-date {
+	display: block;
+	width: 34px;
+	line-height: 34px;
+	background: #e64c65;
+	border-radius: 100%;
+}
+
+</style>
+
+<body>
+    <main>
+        <div class="wrapper">
+            <div class="main-container">
+				<div class="container1">
+					<div class="profile block container"> <!-- PROFILE (MIDDLE-CONTAINER) -->
+						<div class="profile-picture big-profile-picture clear">
+							<img width="150px" alt="profile-picture" src="assets/user.png" >
+						</div>
+						<h1 class="user-name">Anne Hathaway</h1>
+						<div class="profile-description">
+							<p class="scnd-font-color">Lorem ipsum dolor sit amet consectetuer adipiscing</p>
+						</div>
+						<ul class="profile-options horizontal-list">
+							<li class="age"><a>Age: 21</li></a>
+							<li class="weight"><a><p>Weight: 65kg</li></p></a>
+							<li class="height"><a><p>Height: 6'8ft</li></p></a>
+						</ul>
+					</div>
+				</div>
+
+				<div class="container2">
+					<div class="calendar-day block container"> <!-- CALENDAR DAY (RIGHT-CONTAINER) -->
+						<div class="arrow-btn-container">
+							<a class="arrow-btn left" href="#200"><span class="icon fontawesome-angle-left"></span></a>
+							<h2 class="titular">WEDNESDAY</h2>
+							<a class="arrow-btn right" href="#201"><span class="icon fontawesome-angle-right"></span></a>
+						</div>
+							<p class="the-day">26</p>
+							<a class="add-event button" href="#27">ADD EVENT</a>
+					</div>
+
+						<div class="calendar-block block container">
+						  <div class="arrow-btn-container1">
+							<pre><a class="arrow-btn left"><span>◀</span></a></pre>
+							<h2 class="display titular">""</h2>
+							<a class="arrow-btn right"><span>▶</span></a>
+						  </div>
+					  
+						  <div class="week calendar">
+							<div>Su</div>
+							<div>Mo</div>
+							<div>Tu</div>
+							<div>We</div>
+							<div>Th</div>
+							<div>Fr</div>
+							<div>Sa</div>
+						  </div>
+						  <div class="days"></div>
+						</div>
+				</div>
+        </div>
+    </main>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			try {
+				fetch('/getMember/id', {
+					method: 'Get',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify()
+				})
+				.then(res => res.json())
+				.then((data) => {
+					
+				})
+			} catch (error) {
+				console.log(error);
+			}
+		})
+	</script>
+
+	<script>
+		let display = document.querySelector(".display");
+		let days = document.querySelector(".days");
+		let previous = document.querySelector(".left");
+		let next = document.querySelector(".right");
+		let selected = document.querySelector(".selected");
+
+		let date = new Date();
+
+		let year = date.getFullYear();
+		let month = date.getMonth();
+
+		function displayCalendar() {
+		const firstDay = new Date(year, month, 1);
+
+		const lastDay = new Date(year, month + 1, 0);
+
+		const firstDayIndex = firstDay.getDay(); //4
+
+		const numberOfDays = lastDay.getDate(); //31
+
+		let formattedDate = date.toLocaleString("en-US", {
+			month: "long",
+			year: "numeric"
+		});
+
+		display.innerHTML = `${formattedDate}`;
+
+		for (let x = 1; x <= firstDayIndex; x++) {
+			const div = document.createElement("div");
+			div.innerHTML += "";
+
+			days.appendChild(div);
+		}
+
+		for (let i = 1; i <= numberOfDays; i++) {
+			let div = document.createElement("div");
+			let currentDate = new Date(year, month, i);
+
+			div.dataset.date = currentDate.toDateString();
+
+			div.innerHTML += i;
+			days.appendChild(div);
+			if (
+			currentDate.getFullYear() === new Date().getFullYear() &&
+			currentDate.getMonth() === new Date().getMonth() &&
+			currentDate.getDate() === new Date().getDate()
+			) {
+			div.classList.add("current-date");
+			div.classList.add('prim-font-color')
+			} else if (
+				currentDate.getFullYear() <= new Date().getFullYear() &&
+				currentDate.getMonth() <= new Date().getMonth() &&
+				currentDate.getDate() < new Date().getDate()
+			) {
+				div.classList.add('scnd-font-color')
+			} else {
+				div.classList.add('prim-font-color')
+			}
+		}
+		}
+
+		// Call the function to display the calendar
+		displayCalendar();
+
+		previous.addEventListener("click", () => {
+		days.innerHTML = "";
+		selected.innerHTML = "";
+
+		if (month < 0) {
+			month = 11;
+			year = year - 1;
+		}
+
+		month = month - 1;
+
+		date.setMonth(month);
+
+		displayCalendar();
+		});
+
+		next.addEventListener("click", () => {
+		days.innerHTML = "";
+		selected.innerHTML = "";
+
+		if (month > 11) {
+			month = 0;
+			year = year + 1;
+		}
+
+		month = month + 1;
+		date.setMonth(month);
+
+		displayCalendar();
+		});
+	</script>
+</body>
+</html>

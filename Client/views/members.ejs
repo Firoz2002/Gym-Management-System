@@ -1,0 +1,261 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members | GYM-SITE</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/kettlebell.png">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/5ef28b2280.js" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    
+</style>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <i class="fa-solid fa-house" style="color: white;"><a href="/">Home</a></i>
+                </li>
+                <li>
+                    <i class="fa-solid fa-user-plus" style="color: white;" onclick="openForm()"><a>Add-Members</a></i>
+                </li>
+                <li>
+                    <i class="fa-solid fa-user-xmark" style="color: white;" onclick="show()"><a>Remove-Member</a></i>
+                </li>
+                <li>
+                    <i class="fa-solid fa-pen updateMember" style="color: white;"><a>Update-Member</a></i>
+                </li>
+            </ul>
+        </nav>
+    </header>
+<hr>
+    <main>
+        <div class="wrapper">
+            <div class="container">
+                <table>
+                    <thead>
+                        <th>
+                            Gym-Id
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Age
+                        </th>
+                        <th>
+                            Membership
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th class="delete hidden options">
+                            Delete?
+                        </th>
+                    </thead>
+                </table>
+            </div>   
+            <div class="btns">
+                <button class="btn cancel delete" onclick="hide()">Cancel</button>
+                <button class="btn delete confirmBtn">Confirm? </button>
+            </div>
+        </div>
+
+        <div class="planner">
+            <button id="addBtn" style="visibility: visible;" onclick="openForm()"> + </button>
+            <div class="form-popup" id="myForm">
+                <div class="form-container registration-form">
+                  <h1>Registration Form</h1>
+              
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Enter full name" id="name" name="username" required />
+                        
+                    <label>Email Address</label>
+                    <input type="email" placeholder="Enter email address" id="email" name="email" required />
+                            
+                    <div class="column">
+                        <div>
+                          <label>Age</label>
+                          <input type="number" placeholder="Enter age" id="age" required />
+                        </div>
+                        <div>
+                          <label>Height</label>
+                          <input type="number" placeholder="Enter height (in ft.)" id="height" required />
+                        </div>
+                        <div>
+                          <label>Weight</label>
+                          <input type="number" placeholder="Enter height (in kg.)" id="weight" required />
+                        </div>
+                      </div>
+
+                      <div class="membership">
+                        <label for="membership">Membership-Type</label>
+                        <select name="membership" class="memberships">
+
+                        </select>
+                      </div>
+
+                  <button class="btn submitBtn">Confirm</button>
+                  <button class="btn cancel" onclick="closeForm()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const table = document.querySelector('table');
+        const submit = document.querySelector('.submitBtn');
+        const confirmBtn = document.querySelector('.confirmBtn');
+        const memberships = document.querySelector('.memberships');
+        const updateMember = document.querySelector('.updateMember');
+
+        const username = document.querySelector('#name');
+        const email = document.querySelector('#email');
+        const age = document.querySelector('#age');
+        const weight = document.querySelector('#weight');
+        const height = document.querySelector('#height');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                fetch('/getMembers', {
+                    method: 'Get',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify()
+                })
+                .then(res => res.json())
+                .then((data) => {
+                    data.forEach(member => {
+                        addMember(member);
+                    });
+                })
+            } catch (error) {
+                console.log(error);
+             }
+        })
+
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                fetch('/get-membership-plans', {
+                    method: 'Get',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify()
+                })
+                .then(res => res.json())
+                .then((data) => {
+                    let i = 1;
+                    data.forEach(membership => {
+                        memberships.innerHTML += `
+                            <option value="${i}">${membership.name}</option>
+                        `
+                        i++;
+                    });
+                })
+            } catch (error) {
+                console.log(error);
+             }
+        })
+
+        submit.addEventListener('click', () => {
+            try {
+                fetch('/add-member', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: username.value,
+                        email: email.value,
+                        age: age.value,
+                        height: height.value,
+                        weight: weight.value,
+                        membership: 'basic'
+                    })
+                })
+                .then((res) => {
+                    if(res.status === 201) {
+                        location.reload();
+                    }
+                })
+            } catch (error) {
+                console.log(error);
+            }
+        })
+
+        confirmBtn.addEventListener('click', () => {
+
+            const gymIds = [];
+            getGymID(gymIds);
+
+            try {
+                fetch('/removeMember', {
+                    method: "DELETE",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        gymIds: gymIds
+                    })
+                })
+                .then((res) => {
+                    if(res.status === 201) {
+                        location.reload();
+                    }
+                })
+            } catch (error) {
+                console.log(error);
+            }
+        })
+        
+        updateMember.addEventListener('click', () => {
+
+        })
+
+        const getGymID = (arr) => {
+            const nodeList = document.querySelectorAll('.checkbox');
+            for(let i=0; i<nodeList.length; i++) {
+                if(nodeList[i].checked) {
+                    arr.push(table.rows[i+1].cells[0].innerText);
+                }
+            }
+        }
+
+        const addMember = (data) => {
+            const tr = document.createElement('tr')
+            tr.innerHTML = `
+                <td>
+                    ${data.gymId}
+                </td>
+                <td>
+                    ${data.name}
+                </td>
+                <td>
+                    ${data.age}
+                </td>
+                <td>
+                    ${data.membership}
+                </td>
+                <td>
+                    ${data.email}
+                </td>
+                <td class="checkbox-column">
+                    <input type="checkbox" class="checkbox">
+                </td>
+            `
+            table.appendChild(tr);
+        }
+    </script>
+</body>
+</html>
