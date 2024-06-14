@@ -1,5 +1,9 @@
 const deleteEl = document.querySelectorAll('.delete');
 
+function upcoming() {
+    alert("This is featue under construction and will be available in near future");
+}
+
 function openForm() {
     document.getElementById("myForm").style.display = "block";
 }

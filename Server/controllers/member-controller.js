@@ -1,5 +1,7 @@
 const crypto = require("crypto");
 
+const { scheduleBilling } = require('../middlewares/billing');
+
 const db = require("../config/config");
 const { setDoc, doc, getDoc, collection, query, where, getDocs, deleteDoc } = require("firebase/firestore");
 
@@ -18,6 +20,9 @@ const addMember = async(req, res, next) => {
 
         await setDoc(doc(db, 'users', `${data.gymId}`), data)
         .then(async (docSnapshot) => {
+            
+            scheduleBilling(data);
+
             res.status(201).json({
                 message: "Member successfully added"
             })

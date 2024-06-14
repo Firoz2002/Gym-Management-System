@@ -238,7 +238,7 @@ font-size: 16px;
                     <i class="fa-solid fa-file-signature memberships" style="color: white; visibility: hidden;"><a href="/membership-plans">Memberships</a></i>
                 </li>
                 <li>
-                    <i class="fa-solid fa-money-check-dollar" style="color: white;"><a href="/monthly-bills">Monthly-Bills</a></i>
+                    <i class="fa-solid fa-money-check-dollar" style="color: white;" onclick="upcoming()"><a>Monthly-Bills</a></i>
                 </li>
             </ul>
 
@@ -289,6 +289,7 @@ font-size: 16px;
 
     </main>
 
+    <script src="script.js"></script>
     <script>
         const login = document.querySelector('.login');
         const members = document.querySelector('.members');
@@ -311,6 +312,7 @@ font-size: 16px;
                             <span class="username">${data.username}</span>
                         </div>
                         `
+                        login.onclick = '';
                         
                     if(data.role === 'admin') {
                         members.style.visibility = 'visible';

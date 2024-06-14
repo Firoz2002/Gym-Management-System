@@ -1,5 +1,5 @@
 const db = require("../config/config");
-const {doc, setDoc, query, collection, getDocs, where} = require('firebase/firestore')
+const {doc, setDoc, query, collection, getDocs, getDoc, where} = require('firebase/firestore')
 
 const addMembershipPlan = async(req, res, next) => {
     try {
@@ -30,7 +30,7 @@ const addMembershipPlan = async(req, res, next) => {
 
 const getMembership = async(req, res, next) => {
     try {
-        const membershipRef = collection(db, 'memberships', `${req.body.membership}`);
+        const membershipRef = doc(db, 'memberships', `${req.params.membershipPlan}`);
         await getDoc(membershipRef)
         .then((docSnapshot) => {
             res.send(docSnapshot.data())

@@ -5,21 +5,18 @@ const easyinvoice = require('easyinvoice');
 
 require('dotenv').config();
 
-const db = require("../config/config");
-const {query, collection, getDocs, where, getDoc, doc} = require('firebase/firestore')
-
 const agenda = new Agenda({db: {address: process.env.MONGODB_URI}});
 
 agenda.define('createBilling', (job) => {
     try {
+
         const { username, userEmail, userId, membershipPlan, membershipFees } = job.attrs.data; 
 
         var data = {
             "client": {
-                "name": username,
-                "email": userEmail,
-                "gymId": userId,
-                "membership": membershipPlan,
+                "company": `Name: ${username}`,
+                "address": `Email: ${userEmail}`,
+                "zip": `Gym-Id: ${userId}`,
             },
         
             "sender": {
@@ -31,7 +28,7 @@ agenda.define('createBilling', (job) => {
             },
         
             "images": {
-                
+                logo: "https://res.cloudinary.com/dhlsmeyw1/image/upload/v1718309035/ka7gpbbgzvg20t0gzptp.png"
             },
         
             "information": {
@@ -50,7 +47,7 @@ agenda.define('createBilling', (job) => {
         };
 
         easyinvoice.createInvoice(data, (result) => {
-            fs.writeFileSync('invoice.pdf', result.pdf, 'base64');
+            fs.writeFileSync('Server/middlewares/invoices/invoice.pdf', result.pdf, 'base64');
         })
         .then(() => {
 
@@ -82,10 +79,24 @@ agenda.define('createBilling', (job) => {
 
                         Gym-Owner
 
-                        Gym-Management-System`
+                        Gym-Management-System`,
+                attachments: [
+                    {
+                        filename: 'invoice.pdf',
+                        content: fs.createReadStream('Server/middlewares/invoices/invoice.pdf')
+                    }
+                ]
             })
             .then(() => {
 
+                fs.unlink('Server/middlewares/invoices/invoice.pdf', (err) => {
+                    if (err) {
+                      console.error(err);
+                    } else {
+                      console.log('File is deleted.');
+                    }
+                });
+                console.log("invoice successfully sent");
             }) 
         })
 
@@ -96,22 +107,25 @@ agenda.define('createBilling', (job) => {
 
 const scheduleBilling = async(userInfo) => {
     try {
-        const membershipRef = doc(db, 'memberships', `Basic`);
-        getDoc(membershipRef)
-        .then(async(docSnapshot) => {
-            if(docSnapshot.exists()) {
-
-                await agenda.start();
-                await agenda.schedule(`in 30 seconds`, 'createBilling', {
+        fetch(`http://localhost:3000/get-membership/${userInfo.membership}`, {
+            method: 'Get',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify()
+        })
+        .then(response => response.json())
+        .then(async(data) => {
+            await agenda.start();
+            await agenda.schedule(`in 30 seconds`, 'createBilling', {
                 username: userInfo.name,
                 userEmail: userInfo.email,
                 userId: userInfo.gymId,
-                membershipPlan: docSnapshot.data().name,
-                membershipFees: docSnapshot.data().fees,
+                membershipPlan: data.name,
+                membershipFees: data.fees,
             })
-            }
+            console.log("Invoice Successfully");
         })
-
     } catch (error) {
         console.log(error);
     }
