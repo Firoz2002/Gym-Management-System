@@ -18,6 +18,8 @@
       <li><a href="">Vanilia Js</a> - For Intreative components</li>
     </ul>
     <h3>Installing</h3>
+    <p>A step by step series of examples that tell you how to get a development env running</p>
+    <h3>Database</h3>
   </div>
 </div>
 
@@ -35,5 +37,8 @@
     <li> Agenda </li>
     <li> Firebase </li>
     <li> NodeMailer </li>
+    <li> Freepik </li>
+    <li> Cloudinary </li>
+    <li> Font-Awesome </li>
   </ul>
 </div>
