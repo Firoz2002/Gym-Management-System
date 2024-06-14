@@ -4,7 +4,7 @@
 </div>
 
 <div>
-  <h2>UnifiedMentor Internship Project. The project is a web application for control and management of gyms and their members. It has features like Login, Member-management, plans, and monthly-billing</h2>
+  <h2>UnifiedMentor Internship Project. The project is a web application for control and management of gyms and their members. It has features like Login, user-management, plans, and monthly-billing</h2>
 </div>
 
 <div>
@@ -12,6 +12,12 @@
   <p>These instructions will help you to get a copy of the project up and running on your local machine for development and testing purposes.</p>
   <div>
     <h3>Prerequisites</h3>
+    <ul>
+      <li><a href="nodejs.org/en/">NodeJs</a> - Runtime Environment</li>
+      <li><a href="">Firebase</a> - Database</li>
+      <li><a href="">Vanilia Js</a> - For Intreative components</li>
+    </ul>
+    <h3>Installing</h3>
   </div>
 </div>
 
