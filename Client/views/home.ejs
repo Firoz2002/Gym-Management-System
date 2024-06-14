@@ -238,7 +238,7 @@ font-size: 16px;
                     <i class="fa-solid fa-file-signature memberships" style="color: white; visibility: hidden;"><a href="/membership-plans">Memberships</a></i>
                 </li>
                 <li>
-                    <i class="fa-solid fa-money-check-dollar" style="color: white;" onclick="upcoming()"><a>Monthly-Bills</a></i>
+                    <i class="fa-solid fa-money-check-dollar monthly-bills" style="color: white; visibility: hidden;" onclick="upcoming()"><a>Monthly-Bills</a></i>
                 </li>
             </ul>
 
@@ -294,6 +294,7 @@ font-size: 16px;
         const login = document.querySelector('.login');
         const members = document.querySelector('.members');
         const memberships = document.querySelector('.memberships');
+        const monthlyBills = document.querySelector('.monthly-bills');
 
         document.addEventListener('DOMContentLoaded', () => {
             fetch('/islogged', {
@@ -312,11 +313,11 @@ font-size: 16px;
                             <span class="username">${data.username}</span>
                         </div>
                         `
-                        login.onclick = '';
-                        
+    
                     if(data.role === 'admin') {
                         members.style.visibility = 'visible';
                         memberships.style.visibility = 'visible';
+                        monthlyBills.style.visibility = 'visible';
                     } else {
 
                     }
@@ -344,35 +345,35 @@ font-size: 16px;
             })
         })
 
-        login.addEventListener('click', function () {
-        const popupOverlay = document.getElementById('popupOverlay');
-        const popup = document.getElementById('popup');
-        const closePopup = document.getElementById('closePopup');
-        const emailInput = document.getElementById('emailInput');
+        login.addEventListener('click', function eventHandler() {
+            const popupOverlay = document.getElementById('popupOverlay');
+            const popup = document.getElementById('popup');
+            const closePopup = document.getElementById('closePopup');
+            const emailInput = document.getElementById('emailInput');
 
-        function openPopup() {
-            popupOverlay.style.display = 'block';
-        }
-
-        function closePopupFunc() {
-            popupOverlay.style.display = 'none';
-        }
-
-        function submitForm() {
-            const email = emailInput.value;
-            console.log(`Email submitted: ${email}`);
-            closePopupFunc(); // Close the popup after form submission
-        }
-
-        openPopup();
-
-        closePopup.addEventListener('click', closePopupFunc);
-
-        popupOverlay.addEventListener('click', function (event) {
-            if (event.target === popupOverlay) {
-                closePopupFunc();
+            function openPopup() {
+                popupOverlay.style.display = 'block';
             }
-        });
+
+            function closePopupFunc() {
+                popupOverlay.style.display = 'none';
+            }
+
+            function submitForm() {
+                const email = emailInput.value;
+                console.log(`Email submitted: ${email}`);
+                closePopupFunc(); // Close the popup after form submission
+            }
+
+            openPopup();
+
+            closePopup.addEventListener('click', closePopupFunc);
+
+            popupOverlay.addEventListener('click', function (event) {
+                if (event.target === popupOverlay) {
+                    closePopupFunc();
+                }
+            });
         });
     </script>
 </body>

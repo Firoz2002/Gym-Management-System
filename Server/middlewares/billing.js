@@ -117,7 +117,7 @@ const scheduleBilling = async(userInfo) => {
         .then(response => response.json())
         .then(async(data) => {
             await agenda.start();
-            await agenda.schedule(`in 30 seconds`, 'createBilling', {
+            await agenda.schedule(`in ${data.duration} days`, 'createBilling', {
                 username: userInfo.name,
                 userEmail: userInfo.email,
                 userId: userInfo.gymId,
