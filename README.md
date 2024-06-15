@@ -20,8 +20,8 @@
     <h3>Prerequisites</h3>
     <ul>
       <li><a href="nodejs.org/en/">NodeJs</a> - Runtime Environment</li>
-      <li><a href="">Firebase</a> - Database</li>
-      <li><a href="">Vanilia Js</a> - For Intreative components</li>
+      <li><a href="https://firebase.google.com/">Firebase</a> - Database</li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">Vanilia Js</a> - For Intreative components</li>
     </ul>
     <p>What things you need to install the software and how to install them</p>
    <blockquote>
@@ -80,8 +80,18 @@
 <div>
   <h2>Built With</h2>
   <ul>
-    <li><a href="">Express</a> -  A restful API framework</li>
-    <li><a href="">Firebase</a> -  Backend cloud computing services and application development platform</li>
+    <li><a href="https://expressjs.com/">Express</a> -  A restful API framework</li>
+    <li><a href="https://firebase.google.com/">Firebase</a> -  Backend cloud computing services and application development platform</li>
+    <li><a href="https://render.com/">Render</a> - Hosting</li>
+  </ul>
+</div>
+
+<div>
+  <h2>Upcoming Features</h2>
+  <ul>
+    <li>Personlized User Profile</li>
+    <li>Monthly reports</li>
+    <li>And more...</li>
   </ul>
 </div>
 
@@ -104,6 +114,7 @@
     <li> Agenda </li>
     <li> Firebase </li>
     <li> NodeMailer </li>
+    <li> Render </li>
     <li> Freepik </li>
     <li> Cloudinary </li>
     <li> Font-Awesome </li>
