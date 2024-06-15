@@ -17,15 +17,76 @@
       <li><a href="">Firebase</a> - Database</li>
       <li><a href="">Vanilia Js</a> - For Intreative components</li>
     </ul>
+    <p>What things you need to install the software and how to install them</p>
+   <blockquote>
+
+  ```
+   $> git clone https://github.com/Firoz2002/Gym-Management-System/.git
+  ```
+  
+  </blockquote>
     <h3>Installing</h3>
     <p>A step by step series of examples that tell you how to get a development env running</p>
-    <h3>Database</h3>
+    <h4>Getting started</h4>
+    <p>
+      First, create an .env file locally.
+      Please note that you need to intialize the following environment variables to run the project
+    </p>
+    <blockquote>
+
+  ```
+  SECRET = <YOUR JWT SECRET>
+  MONGODB_URI = <YOUR MONGODB DATABASE CONNECTION STRING>
+
+  GMAIL = <YOUR GMAIL-ID>
+  GMAIL_PASSWORD = <YOUR GMAIL APP PASSWORD>
+
+  API = <FIREBASE API-KEY>
+  AUTH_DOMAIN = <FIREBASE AUTH-DOMAIN>
+  PROJECT_ID = <FIREBASE PROJECT-ID>
+  STORAGE_BUCKET = <FIREBASE STORAGE-BUCKET>
+  MESSAGING_SENDER_ID = <FIREBASE MESSAGING-SENDER-ID
+  APP_ID = <FIREBASE APP-ID>
+  MEASUREMENT = <FIREBASE MEASUREMENT-ID>
+  ```
+  
+  </blockquote>
+    <h4>Backend</h4>
+    <p>First install all the back-end dependencies</p>
+    <blockquote>
+
+  ```
+   $> npm install
+  ```
+  
+  </blockquote>
+  <p>Then run app</p>
+  <blockquote>
+
+  ```
+   $> npm start
+  ```
+  
+  </blockquote>
   </div>
+</div>
+
+<div>
+  <h2>Built With</h2>
+  <ul>
+    <li><a href="">Express</a> -  A restful API framework</li>
+    <li><a href="">Firebase</a> -  Backend cloud computing services and application development platform</li>
+  </ul>
 </div>
 
 <div>
   <h2>Author</h2>
   <p>Firoz Kamdar - <i>Full-stack developer</i></p>
+</div>
+
+<div>
+  <h2>License</h2>
+  <p>This project is licensed under the MIT License - see the LICENSE.md file for details</p>
 </div>
 
 <div>
