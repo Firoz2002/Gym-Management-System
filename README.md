@@ -8,6 +8,12 @@
 </div>
 
 <div>
+  <h2>In Action</h2>
+  <p>To see the application live</p>
+  <a href="https://gym-management-system-q2qs.onrender.com/">Click Me!</a>
+  <p>Note:- To access admin features, use GYM-ID = "12345" </p>
+</div>
+<div>
   <h2>Getting Started</h2>
   <p>These instructions will help you to get a copy of the project up and running on your local machine for development and testing purposes.</p>
   <div>
