@@ -116,6 +116,7 @@
     <li> NodeMailer </li>
     <li> Render </li>
     <li> Freepik </li>
+    <li> EasyInvoice </li>
     <li> Cloudinary </li>
     <li> Font-Awesome </li>
   </ul>
